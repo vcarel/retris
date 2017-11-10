@@ -28,3 +28,15 @@ export const overlays = {
     [' ', 'Z', 'Z']
   ]
 }
+
+export function rotateLeft (overlay) {
+  return overlay[0].map((col, c) =>
+    overlay.map((row, r) => overlay[r][row.length - c - 1])
+  )
+}
+
+export function rotateRight (overlay) {
+  return overlay[0].map((col, c) =>
+    overlay.map((row, r) => overlay[overlay.length - r - 1][c])
+  )
+}
