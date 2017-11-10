@@ -24,7 +24,7 @@ class Board extends PureComponent {
 
     this.state.tetromino = {
       overlay: overlays.S,
-      top: 13,
+      bottom: 15,
       left: 5
     }
   }

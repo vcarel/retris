@@ -3,10 +3,10 @@ import React from 'react'
 import Line from './Line'
 import Block from '../../Block'
 
-const TetrominoLayer = ({ tetromino: { top, left, overlay } }) => {
+const TetrominoLayer = ({ tetromino: { bottom, left, overlay } }) => {
   return (
     <div className='tetromino layer'>
-      {Array(top)
+      {Array(bottom - overlay.length)
         .fill()
         .map((_, i) => <Line key={i} shapes={Array(12).fill(' ')} />)}
 
@@ -24,7 +24,7 @@ const TetrominoLayer = ({ tetromino: { top, left, overlay } }) => {
         </div>
       ))}
 
-      {Array(18 - overlay.length - top)
+      {Array(18 - bottom)
         .fill()
         .map((_, i) => <Line key={i} shapes={Array(12).fill(' ')} />)}
     </div>
