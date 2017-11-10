@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 
 import StackLayer from './StackLayer'
 import TetrominoLayer from './TetrominoLayer'
-import { overlays } from '../../overlays'
+import { overlays } from '../../../overlays'
 import './index.css'
 
 // Tetromino shapes are I O T L J Z S

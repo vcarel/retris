@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Line from './Line'
-import Block from '../../components/Block'
+import Block from '../../Block'
 
 const TetrominoLayer = ({ tetromino: { top, left, overlay } }) => {
   return (
