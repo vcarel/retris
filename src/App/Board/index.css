@@ -1,0 +1,28 @@
+.board {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #111;
+}
+
+.board > .layer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.board > .layer > .line {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: line;
+}
+
+.board > .layer > .line > .block {
+  flex-grow: 1;
+}
+
+.board > .tetromino.layer > .line > .block.void {
+  visibility: hidden;
+}

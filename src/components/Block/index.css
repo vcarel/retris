@@ -1,0 +1,38 @@
+.block {
+  box-shadow: inset 0px 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border: solid 1px #111;
+}
+
+.block.void {
+  background: #030303;
+  box-shadow: inset 0px 0px 0px 4px rgba(0, 0, 0, 0.75);
+  /*visibility: hidden;*/
+}
+
+.block.I {
+  background: AquaMarine;
+}
+
+.block.J {
+  background: DodgerBlue;
+}
+
+.block.L {
+  background: DarkOrange;
+}
+
+.block.O {
+  background: Yellow;
+}
+
+.block.S {
+  background: LimeGreen;
+}
+
+.block.T {
+  background: DarkMagenta;
+}
+
+.block.Z {
+  background: OrangeRed;
+}
