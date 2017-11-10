@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Retris",
+  "name": "Retris, a React Tetris clone",
   "icons": [
     {
       "src": "favicon.ico",
