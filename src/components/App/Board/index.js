@@ -38,7 +38,7 @@ class Board extends PureComponent {
     ],
     // tetromino: null,
     tetromino: {
-      overlay: overlays.I,
+      overlay: overlays.L,
       bottom: 1,
       left: 5
     }
@@ -77,10 +77,14 @@ class Board extends PureComponent {
       left += 1
     } else if (code === 'ArrowDown') {
       bottom += 1
-    } else if (code === 'ArrowUp' || code === 'AltLeft') {
+    } else if (code === 'ArrowUp' || code === 'End') {
+      left += Math.floor(overlay[0].length / 2)
       overlay = rotateRight(overlay)
-    } else if (code === 'ControlLeft') {
+      left -= Math.floor(overlay[0].length / 2)
+    } else if (code === 'Home') {
+      left += Math.floor(overlay[0].length / 2)
       overlay = rotateLeft(overlay)
+      left -= Math.floor(overlay[0].length / 2)
     } else {
       return
     }
