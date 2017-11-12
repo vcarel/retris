@@ -1,4 +1,10 @@
-import { mergeIntoStack, overlays, rotateLeft, rotateRight } from './overlays'
+import {
+  overlays,
+  rotateLeft,
+  rotateRight,
+  mergeIntoStack,
+  wouldCollide
+} from './overlays'
 
 const { I, J, T } = overlays
 
@@ -105,5 +111,50 @@ describe('mergeIntoStack', () => {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
     ])
+  })
+})
+
+describe('wouldCollide', () => {
+  it('should return true when tetromino will crash in the stack', () => {
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ]
+    expect(wouldCollide({ overlay: T, bottom: 3, left: 4 }, stack)).toBe(true)
+    expect(wouldCollide({ overlay: T, bottom: 2, left: 8 }, stack)).toBe(true)
+  })
+
+  it('should return true when tetromino will crash in the bottom, left or right', () => {
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    ]
+    expect(wouldCollide({ overlay: T, bottom: 3, left: 4 }, stack)).toBe(true)
+    expect(wouldCollide({ overlay: T, bottom: 2, left: -1 }, stack)).toBe(true)
+    expect(wouldCollide({ overlay: T, bottom: 2, left: 10 }, stack)).toBe(true)
+  })
+
+  it('should return false when no collision', () => {
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ]
+    expect(wouldCollide({ overlay: T, bottom: 1, left: 0 }, stack)).toBe(false)
+    expect(wouldCollide({ overlay: T, bottom: 1, left: 9 }, stack)).toBe(false)
+    expect(wouldCollide({ overlay: T, bottom: 2, left: 8 }, stack)).toBe(false)
+  })
+
+  it('should return false when partially above top', () => {
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    ]
+    expect(wouldCollide({ overlay: T, bottom: 0, left: 0 }, stack)).toBe(false)
   })
 })

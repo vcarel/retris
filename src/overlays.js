@@ -58,3 +58,22 @@ export function mergeIntoStack (tetromino, stack) {
         })
   )
 }
+
+export function wouldCollide (tetromino, stack) {
+  const { overlay, bottom, left } = tetromino
+  const top = bottom - overlay.length + 1
+  const right = left + overlay[0].length - 1
+  return (
+    left < 0 ||
+    bottom >= stack.length ||
+    right >= stack[0].length ||
+    overlay.some(
+      (row, r) =>
+        r + top >= 0 &&
+        row.some(
+          (overlayShape, c) =>
+            overlayShape !== ' ' && stack[r + top][c + left] !== ' '
+        )
+    )
+  )
+}

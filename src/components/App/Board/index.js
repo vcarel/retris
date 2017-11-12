@@ -33,7 +33,7 @@ class Board extends PureComponent {
     // tetromino: null,
     tetromino: {
       overlay: overlays.S,
-      bottom: 14,
+      bottom: 1,
       left: 5
     }
   }
