@@ -5,7 +5,7 @@
   background: #111;
 }
 
-.board > .layer {
+.board > .stack {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -13,16 +13,12 @@
   flex-direction: column;
 }
 
-.board > .layer > .line {
+.board > .stack > .row {
   display: flex;
   flex-grow: 1;
-  flex-direction: line;
+  flex-direction: row;
 }
 
-.board > .layer > .line > .block {
+.board > .stack > .row > .block {
   flex-grow: 1;
-}
-
-.board > .tetromino.layer > .line > .block.void {
-  visibility: hidden;
 }

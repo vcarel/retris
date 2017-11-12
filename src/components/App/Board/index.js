@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 
-import StackLayer from './StackLayer'
-import TetrominoLayer from './TetrominoLayer'
-import { overlays } from '../../../overlays'
+import Row from './Row'
+import { mergeIntoStack, overlays } from '../../../overlays'
 import './index.css'
 
 // Tetromino shapes are I O T L J Z S
@@ -10,31 +9,43 @@ import './index.css'
 class Board extends PureComponent {
   // Board size is 18x12
   state = {
-    stack: Array(18).fill(Array(12).fill(' ')),
-    tetromino: null
-  }
-
-  constructor (props) {
-    super(props)
-
-    this.state.stack[14] = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'] // prettier-ignore
-    this.state.stack[15] = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'] // prettier-ignore
-    this.state.stack[16] = ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'] // prettier-ignore
-    this.state.stack[17] = ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I'] // prettier-ignore
-
-    this.state.tetromino = {
+    // stack: Array(18).fill(Array(12).fill(' ')),
+    stack: [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ],
+    // tetromino: null,
+    tetromino: {
       overlay: overlays.S,
-      bottom: 15,
+      bottom: 14,
       left: 5
     }
   }
 
   render () {
     const { tetromino, stack } = this.state
+    const mergedStack = tetromino ? mergeIntoStack(tetromino, stack) : stack
     return (
       <div className='board'>
-        <StackLayer stack={stack} />
-        {tetromino && <TetrominoLayer tetromino={tetromino} />}
+        <div className='stack'>
+          {mergedStack.map((shapes, r) => <Row key={r} shapes={shapes} />)}
+        </div>
       </div>
     )
   }

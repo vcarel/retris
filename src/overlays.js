@@ -40,3 +40,21 @@ export function rotateRight (overlay) {
     overlay.map((row, r) => overlay[overlay.length - r - 1][c])
   )
 }
+
+export function mergeIntoStack (tetromino, stack) {
+  const { overlay, bottom, left } = tetromino
+  const top = bottom - overlay.length + 1
+  const right = left + overlay[0].length - 1
+  return stack.map(
+    (row, r) =>
+      r < top || r > bottom
+        ? row
+        : row.map((stackShape, c) => {
+          if (c < left || c > right) {
+            return stackShape
+          }
+          const overlayShape = overlay[r - top][c - left]
+          return overlayShape === ' ' ? stackShape : overlayShape
+        })
+  )
+}

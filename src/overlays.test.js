@@ -1,4 +1,4 @@
-import { overlays, rotateLeft, rotateRight } from './overlays'
+import { mergeIntoStack, overlays, rotateLeft, rotateRight } from './overlays'
 
 const { I, J, T } = overlays
 
@@ -67,5 +67,43 @@ describe('rotateRight', () => {
       ['T', 'T'],
       [' ', 'T']
     ]) // prettier-ignore
+  })
+})
+
+describe('mergeIntoStack', () => {
+  it('should merge overlay when completly inside stack', () => {
+    const tetromino = { overlay: T, bottom: 3, left: 2 }
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ]
+    expect(mergeIntoStack(tetromino, stack)).toEqual([
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', 'T', 'T', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ])
+  })
+
+  it('should merge overlay when partially above top', () => {
+    const tetromino = { overlay: T, bottom: 0, left: 2 }
+    const stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
+    ]
+    expect(mergeIntoStack(tetromino, stack)).toEqual([
+      [' ', ' ', ' ', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
+    ])
   })
 })
