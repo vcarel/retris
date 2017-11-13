@@ -34,7 +34,7 @@ class Board extends PureComponent {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
-      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+      ['S', 'J', 'O', 'O', 'L', ' ', ' ', 'Z', 'Z', 'T', ' ', 'I']
     ],
     // tetromino: null,
     tetromino: {
@@ -67,24 +67,28 @@ class Board extends PureComponent {
   }
 
   handleKeyDown (e) {
+    const code = e.code
+    const shiftKey = e.shiftKey
     const { stack } = this.state
     let { tetromino, tetromino: { bottom, left, overlay } } = this.state
 
-    const code = e.code
     if (code === 'ArrowLeft') {
-      left -= 1
+      left--
     } else if (code === 'ArrowRight') {
-      left += 1
-    } else if (code === 'ArrowDown') {
-      bottom += 1
+      left++
+    } else if (code === 'Enter' && !shiftKey) {
+      bottom++
     } else if (code === 'ArrowUp' || code === 'End') {
       left += Math.floor(overlay[0].length / 2)
       overlay = rotateRight(overlay)
       left -= Math.floor(overlay[0].length / 2)
-    } else if (code === 'Home') {
+    } else if (code === 'ArrowDown' || code === 'Home') {
       left += Math.floor(overlay[0].length / 2)
       overlay = rotateLeft(overlay)
       left -= Math.floor(overlay[0].length / 2)
+    } else if (code === 'Space' || (code === 'Enter' && shiftKey)) {
+      while (!wouldCollide({ ...tetromino, bottom: ++bottom }, stack)) {}
+      bottom--
     } else {
       return
     }
