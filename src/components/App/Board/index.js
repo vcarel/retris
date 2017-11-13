@@ -62,6 +62,12 @@ class Board extends PureComponent {
         <div className='stack'>
           {mergedStack.map((shapes, r) => <Row key={r} shapes={shapes} />)}
         </div>
+        <div className='backdrop'>
+          <div className='text'>
+            <h3>New Game</h3>
+            <p className='blink'>&lt;Press any key&gt;</p>
+          </div>
+        </div>
       </div>
     )
   }
