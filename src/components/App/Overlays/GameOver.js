@@ -1,6 +1,6 @@
 import React from 'react'
 
-const titles = ['Ouch!', 'Too bad!', 'Check it baby!', 'That hurts!']
+const titles = ['Ouch!', 'Too bad!', 'That hurts!']
 const GameOver = () => (
   <div className='backdrop'>
     <div className='text'>
