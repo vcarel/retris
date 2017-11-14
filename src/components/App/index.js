@@ -48,13 +48,19 @@ class App extends Component {
   state = initialState
 
   handleKeyDown = this.handleKeyDown.bind(this)
+  handleVisibilityChange = this.handleVisibilityChange.bind(this)
 
   componentDidMount () {
     document.addEventListener('keydown', this.handleKeyDown)
+    document.addEventListener('visibilitychange', this.handleVisibilityChange)
   }
 
   componentWillUnmount () {
     document.removeEventListener('keydown', this.handleKeyDown)
+    document.removeEventListener(
+      'visibilityChange',
+      this.handleVisibilityChange
+    )
   }
 
   render () {
@@ -83,11 +89,12 @@ class App extends Component {
 
     if (status === 'new' || status === 'end') {
       if (key.length === 1 || ['Enter', 'Space'].includes(code)) {
-        // Alpha-numeric keys have a key length of 1
         this.startNewGame()
       }
     } else if (status === 'pause') {
-      this.resumeGame()
+      if (key.length === 1 || ['Enter', 'Space'].includes(code)) {
+        this.resumeGame()
+      }
     } else if (status === 'playing') {
       const { stack } = this.state
       let { tetromino, tetromino: { bottom, left, sprite } } = this.state
@@ -119,6 +126,12 @@ class App extends Component {
       if (!wouldCollide(tetromino, stack)) {
         this.setState({ tetromino })
       }
+    }
+  }
+
+  handleVisibilityChange () {
+    if (document.hidden && this.state.status === 'playing') {
+      this.pauseGame()
     }
   }
 
