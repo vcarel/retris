@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import Board from './Board'
-import NewGame from './Backdrops/NewGame'
-import GameOver from './Backdrops/GameOver'
+import NewGame from './Overlays/NewGame'
+import GameOver from './Overlays/GameOver'
 import {
   mergeIntoStack,
   sprites,
