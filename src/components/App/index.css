@@ -40,12 +40,22 @@
 
 .blink {
   animation: blinker 1s linear infinite;
-  transform: translateZ(0);
-  will-change: auto;
 }
 
 @keyframes blinker {
-  50% {
+  0% {
+    opacity: 0.75;
+  }
+
+  25% {
     opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0.75;
   }
 }
