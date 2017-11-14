@@ -158,29 +158,30 @@ class App extends Component {
 
   resumeGame () {
     this.setState({ status: 'playing' })
+    this.dropIntervalId = setInterval(() => this.moveTetrominoDown(), 1000)
+  }
 
-    this.dropIntervalId = setInterval(() => {
-      const { stack, tetromino, tetromino: { bottom } } = this.state
-      const nextTetromino = { ...tetromino, bottom: bottom + 1 }
+  moveTetrominoDown () {
+    const { stack, tetromino, tetromino: { bottom } } = this.state
+    const nextTetromino = { ...tetromino, bottom: bottom + 1 }
 
-      if (!wouldCollide(nextTetromino, stack)) {
-        this.setState({ tetromino: nextTetromino })
-      } else if (bottom > 1) {
-        const newStack = mergeIntoStack(tetromino, stack)
-        const rowsToDrop = getRowsToDrop(newStack)
-        this.setState({
-          stack: newStack,
-          tetromino: this.getRandomTetromino(),
-          rowsToDrop
-        })
-        if (rowsToDrop.length > 0) {
-          this.deferDropLines()
-        }
-      } else {
-        this.setState({ status: bottom > 1 ? 'playing' : 'end' })
-        clearInterval(this.dropIntervalId)
+    if (!wouldCollide(nextTetromino, stack)) {
+      this.setState({ tetromino: nextTetromino })
+    } else if (bottom > 1) {
+      const newStack = mergeIntoStack(tetromino, stack)
+      const rowsToDrop = getRowsToDrop(newStack)
+      this.setState({
+        stack: newStack,
+        tetromino: this.getRandomTetromino(),
+        rowsToDrop
+      })
+      if (rowsToDrop.length > 0) {
+        this.deferDropLines()
       }
-    }, 1000)
+    } else {
+      this.setState({ status: bottom > 1 ? 'playing' : 'end' })
+      clearInterval(this.dropIntervalId)
+    }
   }
 
   getRandomTetromino () {
