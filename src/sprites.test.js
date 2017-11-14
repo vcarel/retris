@@ -4,7 +4,8 @@ import {
   rotateRight,
   mergeIntoStack,
   wouldCollide,
-  dropLastLines
+  dropRows,
+  getRowsToDrop
 } from './sprites'
 
 const { I, J, T } = sprites
@@ -160,22 +161,52 @@ describe('wouldCollide', () => {
   })
 })
 
-describe('dropLastLines', () => {
+describe('dropRows', () => {
   it('should drop the specified number of lines and shift all the stack', () => {
     const stack = [
       [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
       ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
     ]
-    expect(dropLastLines(stack, 1)).toEqual([
+    expect(dropRows(stack, [2])).toEqual([
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
     ])
-    expect(dropLastLines(stack, 2)).toEqual([
+    expect(dropRows(stack, [0, 2])).toEqual([
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
     ])
+  })
+})
+
+describe('getRowsToDrop', () => {
+  it('should return the indices of the rows to drop', () => {
+    let stack
+
+    stack = [
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
+    ]
+    expect(getRowsToDrop(stack)).toEqual([])
+
+    stack = [
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', 'S', 'O', 'O', 'L', 'J', 'J', 'J', 'Z', 'T', 'T', 'I']
+    ]
+    expect(getRowsToDrop(stack)).toEqual([2])
+
+    stack = [
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', 'S', 'O', 'O', 'L', 'J', 'J', 'J', 'Z', 'T', 'T', 'I'],
+      ['S', ' ', ' ', 'O', 'L', ' ', 'J', ' ', 'Z', 'T', 'T', 'I'],
+      ['S', 'S', 'O', 'O', 'L', 'J', 'Z', 'J', 'Z', 'T', 'T', 'I'],
+      ['S', 'S', 'O', 'I', 'L', 'J', 'J', 'J', 'Z', 'T', 'T', 'I']
+    ]
+    expect(getRowsToDrop(stack)).toEqual([2, 4, 5])
   })
 })

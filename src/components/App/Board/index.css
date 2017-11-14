@@ -19,7 +19,7 @@
   flex-direction: row;
 }
 
-.board > .stack > .row.animateVanish {
+.board > .stack > .row.animateRowDrop {
   filter: saturate(0.3) brightness(10);
   transition: filter ease-in 0.4s;
 }

@@ -78,9 +78,21 @@ export function wouldCollide (tetromino, stack) {
   )
 }
 
-export function dropLastLines (stack, nb) {
-  return [
-    ...Array(nb).fill(Array(stack[0].length).fill(' ')),
-    ...stack.slice(0, stack.length - nb)
-  ]
+export function dropRows (stack, rows) {
+  const emptyRow = Array(stack[0].length).fill(' ')
+  return rows.reduce(
+    (stack, r) => {
+      stack.splice(r, 1)
+      return [emptyRow, ...stack]
+    },
+    [...stack]
+  )
+}
+
+export function getRowsToDrop (stack) {
+  return stack.reduce(
+    (rowsToDrop, row, r) =>
+      stack[r].every(shape => shape !== ' ') ? [...rowsToDrop, r] : rowsToDrop,
+    []
+  )
 }

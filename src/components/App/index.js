@@ -10,7 +10,8 @@ import {
   rotateLeft,
   rotateRight,
   wouldCollide,
-  dropLastLines
+  dropRows,
+  getRowsToDrop
 } from '../../sprites'
 import './index.css'
 
@@ -43,7 +44,7 @@ const initialState = {
   tetromino: null,
   status: 'new', // Can be new, playing, end, pause
   level: null,
-  nbLinesToVanish: 0
+  rowsToDrop: []
 }
 
 class App extends Component {
@@ -66,7 +67,7 @@ class App extends Component {
   }
 
   render () {
-    const { nbLinesToVanish, stack, status, tetromino } = this.state
+    const { rowsToDrop, stack, status, tetromino } = this.state
     return (
       <div className='app'>
         <div className='left pane' />
@@ -74,7 +75,7 @@ class App extends Component {
         <div className='middle pane'>
           <Board
             stack={tetromino ? mergeIntoStack(tetromino, stack) : stack}
-            nbLinesToVanish={nbLinesToVanish}
+            rowsToDrop={rowsToDrop}
           />
 
           {status === 'new' && <NewGame />}
@@ -145,7 +146,7 @@ class App extends Component {
       stack: Array(18).fill(Array(12).fill(' ')), // Board size is 18x12
       tetromino: this.getRandomTetromino(),
       level: 0,
-      nbLinesToVanish: 0
+      rowsToDrop: []
     })
     this.resumeGame()
   }
@@ -165,18 +166,16 @@ class App extends Component {
       if (!wouldCollide(nextTetromino, stack)) {
         this.setState({ tetromino: nextTetromino })
       } else if (bottom > 1) {
+        const newStack = mergeIntoStack(tetromino, stack)
+        const rowsToDrop = getRowsToDrop(newStack)
         this.setState({
-          stack: mergeIntoStack(tetromino, stack),
+          stack: newStack,
           tetromino: this.getRandomTetromino(),
-          nbLinesToVanish: 1
+          rowsToDrop
         })
-        setTimeout(() => {
-          const { nbLinesToVanish, stack } = this.state
-          this.setState({
-            stack: dropLastLines(stack, nbLinesToVanish),
-            nbLinesToVanish: 0
-          })
-        }, 400)
+        if (rowsToDrop.length > 0) {
+          this.deferDropLines()
+        }
       } else {
         this.setState({ status: bottom > 1 ? 'playing' : 'end' })
         clearInterval(this.dropIntervalId)
@@ -192,6 +191,16 @@ class App extends Component {
       bottom: 1,
       left: 5
     }
+  }
+
+  deferDropLines () {
+    setTimeout(() => {
+      const { rowsToDrop, stack } = this.state
+      this.setState({
+        stack: dropRows(stack, rowsToDrop),
+        rowsToDrop: []
+      })
+    }, 400)
   }
 }
 
