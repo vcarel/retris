@@ -9,7 +9,8 @@ import {
   sprites,
   rotateLeft,
   rotateRight,
-  wouldCollide
+  wouldCollide,
+  dropLastLines
 } from '../../sprites'
 import './index.css'
 
@@ -41,7 +42,8 @@ const initialState = {
   ],
   tetromino: null,
   status: 'new', // Can be new, playing, end, pause
-  level: null
+  level: null,
+  nbLinesToVanish: 0
 }
 
 class App extends Component {
@@ -64,13 +66,16 @@ class App extends Component {
   }
 
   render () {
-    const { tetromino, stack, status } = this.state
+    const { nbLinesToVanish, stack, status, tetromino } = this.state
     return (
       <div className='app'>
         <div className='left pane' />
 
         <div className='middle pane'>
-          <Board stack={tetromino ? mergeIntoStack(tetromino, stack) : stack} />
+          <Board
+            stack={tetromino ? mergeIntoStack(tetromino, stack) : stack}
+            nbLinesToVanish={nbLinesToVanish}
+          />
 
           {status === 'new' && <NewGame />}
           {status === 'pause' && <Pause />}
@@ -139,7 +144,8 @@ class App extends Component {
     this.setState({
       stack: Array(18).fill(Array(12).fill(' ')), // Board size is 18x12
       tetromino: this.getRandomTetromino(),
-      level: 0
+      level: 0,
+      nbLinesToVanish: 0
     })
     this.resumeGame()
   }
@@ -161,8 +167,16 @@ class App extends Component {
       } else if (bottom > 1) {
         this.setState({
           stack: mergeIntoStack(tetromino, stack),
-          tetromino: this.getRandomTetromino()
+          tetromino: this.getRandomTetromino(),
+          nbLinesToVanish: 1
         })
+        setTimeout(() => {
+          const { nbLinesToVanish, stack } = this.state
+          this.setState({
+            stack: dropLastLines(stack, nbLinesToVanish),
+            nbLinesToVanish: 0
+          })
+        }, 400)
       } else {
         this.setState({ status: bottom > 1 ? 'playing' : 'end' })
         clearInterval(this.dropIntervalId)

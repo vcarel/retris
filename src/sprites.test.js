@@ -3,7 +3,8 @@ import {
   rotateLeft,
   rotateRight,
   mergeIntoStack,
-  wouldCollide
+  wouldCollide,
+  dropLastLines
 } from './sprites'
 
 const { I, J, T } = sprites
@@ -156,5 +157,25 @@ describe('wouldCollide', () => {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
     ]
     expect(wouldCollide({ sprite: T, bottom: 0, left: 0 }, stack)).toBe(false)
+  })
+})
+
+describe('dropLastLines', () => {
+  it('should drop the specified number of lines and shift all the stack', () => {
+    const stack = [
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
+      ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
+    ]
+    expect(dropLastLines(stack, 1)).toEqual([
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I']
+    ])
+    expect(dropLastLines(stack, 2)).toEqual([
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    ])
   })
 })

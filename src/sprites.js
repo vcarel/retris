@@ -77,3 +77,10 @@ export function wouldCollide (tetromino, stack) {
     )
   )
 }
+
+export function dropLastLines (stack, nb) {
+  return [
+    ...Array(nb).fill(Array(stack[0].length).fill(' ')),
+    ...stack.slice(0, stack.length - nb)
+  ]
+}
