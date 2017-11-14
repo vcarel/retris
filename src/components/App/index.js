@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Board from './Board'
 import NewGame from './Overlays/NewGame'
 import GameOver from './Overlays/GameOver'
+import Pause from './Overlays/Pause'
 import {
   mergeIntoStack,
   sprites,
@@ -66,6 +67,7 @@ class App extends Component {
           <Board stack={tetromino ? mergeIntoStack(tetromino, stack) : stack} />
 
           {status === 'new' && <NewGame />}
+          {status === 'pause' && <Pause />}
           {status === 'end' && <GameOver />}
         </div>
 
@@ -79,11 +81,13 @@ class App extends Component {
     const key = e.key
     const { status } = this.state
 
-    if (status === 'new') {
+    if (status === 'new' || status === 'end') {
       if (key.length === 1 || ['Enter', 'Space'].includes(code)) {
         // Alpha-numeric keys have a key length of 1
         this.startNewGame()
       }
+    } else if (status === 'pause') {
+      this.resumeGame()
     } else if (status === 'playing') {
       const { stack } = this.state
       let { tetromino, tetromino: { bottom, left, sprite } } = this.state
@@ -105,6 +109,8 @@ class App extends Component {
       } else if (code === 'Space' || code === 'Enter') {
         while (!wouldCollide({ ...tetromino, bottom: ++bottom }, stack)) {}
         bottom--
+      } else if (code === 'Escape') {
+        this.pauseGame()
       } else {
         return
       }
@@ -120,9 +126,18 @@ class App extends Component {
     this.setState({
       stack: Array(18).fill(Array(12).fill(' ')), // Board size is 18x12
       tetromino: this.getRandomTetromino(),
-      status: 'playing',
       level: 0
     })
+    this.resumeGame()
+  }
+
+  pauseGame () {
+    this.setState({ status: 'pause' })
+    clearInterval(this.dropIntervalId)
+  }
+
+  resumeGame () {
+    this.setState({ status: 'playing' })
 
     this.dropIntervalId = setInterval(() => {
       const { stack, tetromino, tetromino: { bottom } } = this.state
