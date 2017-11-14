@@ -12,8 +12,8 @@ import {
 } from '../../sprites'
 import './index.css'
 
-// Board size is 18x12
 const initialState = {
+  // Board size is 18x12
   stack: [
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -39,7 +39,7 @@ const initialState = {
     ['J', 'J', ' ', 'Z', 'Z', 'T', ' ', 'S', 'S', 'L', 'L', 'I']
   ],
   tetromino: null,
-  gameStatus: 'new',
+  status: 'new', // Can be new, playing, end, pause
   level: null
 }
 
@@ -57,7 +57,7 @@ class App extends Component {
   }
 
   render () {
-    const { tetromino, stack, gameStatus } = this.state
+    const { tetromino, stack, status } = this.state
     return (
       <div className='app'>
         <div className='left pane' />
@@ -65,8 +65,8 @@ class App extends Component {
         <div className='middle pane'>
           <Board stack={tetromino ? mergeIntoStack(tetromino, stack) : stack} />
 
-          {gameStatus === 'new' && <NewGame />}
-          {gameStatus === 'end' && <GameOver />}
+          {status === 'new' && <NewGame />}
+          {status === 'end' && <GameOver />}
         </div>
 
         <div className='right pane' />
@@ -77,13 +77,14 @@ class App extends Component {
   handleKeyDown (e) {
     const code = e.code
     const key = e.key
+    const { status } = this.state
 
-    if (this.state.gameStatus === 'new') {
+    if (status === 'new') {
       if (key.length === 1 || ['Enter', 'Space'].includes(code)) {
         // Alpha-numeric keys have a key length of 1
         this.startNewGame()
       }
-    } else if (this.state.gameStatus === 'playing') {
+    } else if (status === 'playing') {
       const { stack } = this.state
       let { tetromino, tetromino: { bottom, left, sprite } } = this.state
 
@@ -119,7 +120,7 @@ class App extends Component {
     this.setState({
       stack: Array(18).fill(Array(12).fill(' ')), // Board size is 18x12
       tetromino: this.getRandomTetromino(),
-      gameStatus: 'playing',
+      status: 'playing',
       level: 0
     })
 
@@ -135,9 +136,7 @@ class App extends Component {
           tetromino: this.getRandomTetromino()
         })
       } else {
-        this.setState({
-          gameStatus: bottom > 1 ? 'playing' : 'end'
-        })
+        this.setState({ status: bottom > 1 ? 'playing' : 'end' })
         clearInterval(this.dropIntervalId)
       }
     }, 1000)
