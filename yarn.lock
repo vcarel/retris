@@ -5266,7 +5266,7 @@ react-dev-utils@^4.2.1:
     inquirer "3.3.0"
     is-root "1.0.0"
     opn "5.1.0"
-    react-error-overlay "^3.0.0"
+    react-error-sprite "^3.0.0"
     recursive-readdir "2.2.1"
     shell-quote "1.6.1"
     sockjs-client "1.1.4"
@@ -5282,9 +5282,9 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-error-overlay@^3.0.0:
+react-error-sprite@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
+  resolved "https://registry.yarnpkg.com/react-error-sprite/-/react-error-sprite-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
 react-scripts@1.0.17:
   version "1.0.17"

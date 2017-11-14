@@ -1,12 +1,12 @@
 import {
-  overlays,
+  sprites,
   rotateLeft,
   rotateRight,
   mergeIntoStack,
   wouldCollide
-} from './overlays'
+} from './sprites'
 
-const { I, J, T } = overlays
+const { I, J, T } = sprites
 
 describe('rotateLeft', () => {
   it('should rotate any matrix to the left', () => {
@@ -77,8 +77,8 @@ describe('rotateRight', () => {
 })
 
 describe('mergeIntoStack', () => {
-  it('should merge overlay when completly inside stack', () => {
-    const tetromino = { overlay: T, bottom: 3, left: 2 }
+  it('should merge sprite when completly inside stack', () => {
+    const tetromino = { sprite: T, bottom: 3, left: 2 }
     const stack = [
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -99,8 +99,8 @@ describe('mergeIntoStack', () => {
     ])
   })
 
-  it('should merge overlay when partially above top', () => {
-    const tetromino = { overlay: T, bottom: 0, left: 2 }
+  it('should merge sprite when partially above top', () => {
+    const tetromino = { sprite: T, bottom: 0, left: 2 }
     const stack = [
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'I'],
@@ -122,8 +122,8 @@ describe('wouldCollide', () => {
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
       ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
     ]
-    expect(wouldCollide({ overlay: T, bottom: 3, left: 4 }, stack)).toBe(true)
-    expect(wouldCollide({ overlay: T, bottom: 2, left: 8 }, stack)).toBe(true)
+    expect(wouldCollide({ sprite: T, bottom: 3, left: 4 }, stack)).toBe(true)
+    expect(wouldCollide({ sprite: T, bottom: 2, left: 8 }, stack)).toBe(true)
   })
 
   it('should return true when tetromino will crash in the bottom, left or right', () => {
@@ -132,9 +132,9 @@ describe('wouldCollide', () => {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
     ]
-    expect(wouldCollide({ overlay: T, bottom: 3, left: 4 }, stack)).toBe(true)
-    expect(wouldCollide({ overlay: T, bottom: 2, left: -1 }, stack)).toBe(true)
-    expect(wouldCollide({ overlay: T, bottom: 2, left: 10 }, stack)).toBe(true)
+    expect(wouldCollide({ sprite: T, bottom: 3, left: 4 }, stack)).toBe(true)
+    expect(wouldCollide({ sprite: T, bottom: 2, left: -1 }, stack)).toBe(true)
+    expect(wouldCollide({ sprite: T, bottom: 2, left: 10 }, stack)).toBe(true)
   })
 
   it('should return false when no collision', () => {
@@ -145,9 +145,9 @@ describe('wouldCollide', () => {
       ['S', ' ', 'O', 'O', 'L', ' ', ' ', ' ', 'T', 'T', 'T', 'I'],
       ['S', ' ', 'O', 'O', 'L', ' ', 'J', 'J', 'Z', 'T', ' ', 'I']
     ]
-    expect(wouldCollide({ overlay: T, bottom: 1, left: 0 }, stack)).toBe(false)
-    expect(wouldCollide({ overlay: T, bottom: 1, left: 9 }, stack)).toBe(false)
-    expect(wouldCollide({ overlay: T, bottom: 2, left: 8 }, stack)).toBe(false)
+    expect(wouldCollide({ sprite: T, bottom: 1, left: 0 }, stack)).toBe(false)
+    expect(wouldCollide({ sprite: T, bottom: 1, left: 9 }, stack)).toBe(false)
+    expect(wouldCollide({ sprite: T, bottom: 2, left: 8 }, stack)).toBe(false)
   })
 
   it('should return false when partially above top', () => {
@@ -155,6 +155,6 @@ describe('wouldCollide', () => {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
     ]
-    expect(wouldCollide({ overlay: T, bottom: 0, left: 0 }, stack)).toBe(false)
+    expect(wouldCollide({ sprite: T, bottom: 0, left: 0 }, stack)).toBe(false)
   })
 })

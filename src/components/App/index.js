@@ -5,11 +5,11 @@ import NewGame from './Backdrops/NewGame'
 import GameOver from './Backdrops/GameOver'
 import {
   mergeIntoStack,
-  overlays,
+  sprites,
   rotateLeft,
   rotateRight,
   wouldCollide
-} from '../../overlays'
+} from '../../sprites'
 import './index.css'
 
 // Board size is 18x12
@@ -85,7 +85,7 @@ class App extends Component {
       }
     } else if (this.state.gameStatus === 'playing') {
       const { stack } = this.state
-      let { tetromino, tetromino: { bottom, left, overlay } } = this.state
+      let { tetromino, tetromino: { bottom, left, sprite } } = this.state
 
       if (code === 'ArrowLeft') {
         left--
@@ -94,13 +94,13 @@ class App extends Component {
       } else if (code === 'ArrowDown') {
         bottom++
       } else if (code === 'ArrowUp' || code === 'End') {
-        left += Math.floor(overlay[0].length / 2)
-        overlay = rotateRight(overlay)
-        left -= Math.floor(overlay[0].length / 2)
+        left += Math.floor(sprite[0].length / 2)
+        sprite = rotateRight(sprite)
+        left -= Math.floor(sprite[0].length / 2)
       } else if (code === 'Home') {
-        left += Math.floor(overlay[0].length / 2)
-        overlay = rotateLeft(overlay)
-        left -= Math.floor(overlay[0].length / 2)
+        left += Math.floor(sprite[0].length / 2)
+        sprite = rotateLeft(sprite)
+        left -= Math.floor(sprite[0].length / 2)
       } else if (code === 'Space' || code === 'Enter') {
         while (!wouldCollide({ ...tetromino, bottom: ++bottom }, stack)) {}
         bottom--
@@ -108,7 +108,7 @@ class App extends Component {
         return
       }
 
-      tetromino = { ...tetromino, bottom, left, overlay }
+      tetromino = { ...tetromino, bottom, left, sprite }
       if (!wouldCollide(tetromino, stack)) {
         this.setState({ tetromino })
       }
@@ -144,10 +144,10 @@ class App extends Component {
   }
 
   getRandomTetromino () {
-    const shapes = Object.keys(overlays)
+    const shapes = Object.keys(sprites)
     const shape = shapes[Math.floor(Math.random() * shapes.length)]
     return {
-      overlay: overlays[shape],
+      sprite: sprites[shape],
       bottom: 1,
       left: 5
     }
