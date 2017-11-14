@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewGameBackdrop = () => (
+const NewGame = () => (
   <div className='backdrop'>
     <div className='text'>
       <h3>New Game</h3>
@@ -9,4 +9,4 @@ const NewGameBackdrop = () => (
   </div>
 )
 
-export default NewGameBackdrop
+export default NewGame
