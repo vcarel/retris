@@ -13,6 +13,7 @@ import {
   dropRows,
   getRowsToDrop
 } from '../../sprites'
+import { sleep } from '../../time'
 import './index.css'
 
 const initialState = {
@@ -42,7 +43,7 @@ const initialState = {
     ['J', 'J', ' ', 'Z', 'Z', 'T', ' ', 'S', 'S', 'L', 'L', 'I']
   ],
   tetromino: null,
-  status: 'new', // Can be new, playing, end, pause
+  status: 'new', // Can be new, playing, end, pause, filling
   level: null,
   rowsToDrop: []
 }
@@ -81,6 +82,9 @@ class App extends Component {
           {status === 'new' && <NewGame />}
           {status === 'pause' && <Pause />}
           {status === 'end' && <GameOver />}
+          {status === 'filling' && (
+            <Board filling stack={createStack(getRandomShape())} />
+          )}
         </div>
 
         <div className='right pane' />
@@ -141,13 +145,22 @@ class App extends Component {
     }
   }
 
-  startNewGame () {
+  async startNewGame () {
+    await this.fillStack()
+
     this.setState({
-      stack: Array(18).fill(Array(12).fill(' ')), // Board size is 18x12
-      tetromino: this.getRandomTetromino(),
+      stack: createStack(' '),
       level: 0,
-      rowsToDrop: []
+      rowsToDrop: [],
+      status: null
     })
+
+    await sleep(1000)
+
+    this.setState({
+      tetromino: getRandomTetromino()
+    })
+
     this.resumeGame()
   }
 
@@ -172,7 +185,7 @@ class App extends Component {
       const rowsToDrop = getRowsToDrop(newStack)
       this.setState({
         stack: newStack,
-        tetromino: this.getRandomTetromino(),
+        tetromino: getRandomTetromino(),
         rowsToDrop
       })
       if (rowsToDrop.length > 0) {
@@ -184,25 +197,36 @@ class App extends Component {
     }
   }
 
-  getRandomTetromino () {
-    const shapes = Object.keys(sprites)
-    const shape = shapes[Math.floor(Math.random() * shapes.length)]
-    return {
-      sprite: sprites[shape],
-      bottom: 1,
-      left: 5
-    }
+  async deferDropLines () {
+    await sleep(400)
+    const { rowsToDrop, stack } = this.state
+    this.setState({
+      stack: dropRows(stack, rowsToDrop),
+      rowsToDrop: []
+    })
   }
 
-  deferDropLines () {
-    setTimeout(() => {
-      const { rowsToDrop, stack } = this.state
-      this.setState({
-        stack: dropRows(stack, rowsToDrop),
-        rowsToDrop: []
-      })
-    }, 400)
+  async fillStack () {
+    this.setState({ status: 'filling' })
+    await sleep(1700)
   }
+}
+
+function createStack (shape) {
+  return Array(18).fill(Array(12).fill(shape))
+}
+
+function getRandomTetromino () {
+  return {
+    sprite: sprites[getRandomShape()],
+    bottom: 1,
+    left: 5
+  }
+}
+
+function getRandomShape () {
+  const shapes = Object.keys(sprites)
+  return shapes[Math.floor(Math.random() * shapes.length)]
 }
 
 export default App

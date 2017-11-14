@@ -1,7 +1,8 @@
 .board {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
   background: #111;
 }
 
@@ -13,17 +14,17 @@
   flex-direction: column;
 }
 
-.board > .stack > .row {
+.stack > .row {
   display: flex;
   flex-grow: 1;
   flex-direction: row;
 }
 
-.board > .stack > .row.animateRowDrop {
+.stack > .row.animateRowDrop {
   filter: saturate(0.3) brightness(10);
   transition: filter ease-in 0.4s;
 }
 
-.board > .stack > .row > .block {
+.stack > .row > .block {
   flex-grow: 1;
 }

@@ -1,0 +1,312 @@
+.stack.filling > .row:nth-child(18) > .block:nth-child(1) {
+  animation: filling 0.04s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(2),
+.stack.filling > .row:nth-child(17) > .block:nth-child(1) {
+  animation: filling 0.08s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(3),
+.stack.filling > .row:nth-child(17) > .block:nth-child(2),
+.stack.filling > .row:nth-child(16) > .block:nth-child(1) {
+  animation: filling 0.12s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(4),
+.stack.filling > .row:nth-child(17) > .block:nth-child(3),
+.stack.filling > .row:nth-child(16) > .block:nth-child(2),
+.stack.filling > .row:nth-child(15) > .block:nth-child(1) {
+  animation: filling 0.16s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(5),
+.stack.filling > .row:nth-child(17) > .block:nth-child(4),
+.stack.filling > .row:nth-child(16) > .block:nth-child(3),
+.stack.filling > .row:nth-child(15) > .block:nth-child(2),
+.stack.filling > .row:nth-child(14) > .block:nth-child(1) {
+  animation: filling 0.2s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(6),
+.stack.filling > .row:nth-child(17) > .block:nth-child(5),
+.stack.filling > .row:nth-child(16) > .block:nth-child(4),
+.stack.filling > .row:nth-child(15) > .block:nth-child(3),
+.stack.filling > .row:nth-child(14) > .block:nth-child(2),
+.stack.filling > .row:nth-child(13) > .block:nth-child(1) {
+  animation: filling 0.24s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(7),
+.stack.filling > .row:nth-child(17) > .block:nth-child(6),
+.stack.filling > .row:nth-child(16) > .block:nth-child(5),
+.stack.filling > .row:nth-child(15) > .block:nth-child(4),
+.stack.filling > .row:nth-child(14) > .block:nth-child(3),
+.stack.filling > .row:nth-child(13) > .block:nth-child(2),
+.stack.filling > .row:nth-child(12) > .block:nth-child(1) {
+  animation: filling 0.28s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(8),
+.stack.filling > .row:nth-child(17) > .block:nth-child(7),
+.stack.filling > .row:nth-child(16) > .block:nth-child(6),
+.stack.filling > .row:nth-child(15) > .block:nth-child(5),
+.stack.filling > .row:nth-child(14) > .block:nth-child(4),
+.stack.filling > .row:nth-child(13) > .block:nth-child(3),
+.stack.filling > .row:nth-child(12) > .block:nth-child(2),
+.stack.filling > .row:nth-child(11) > .block:nth-child(1) {
+  animation: filling 0.32s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(9),
+.stack.filling > .row:nth-child(17) > .block:nth-child(8),
+.stack.filling > .row:nth-child(16) > .block:nth-child(7),
+.stack.filling > .row:nth-child(15) > .block:nth-child(6),
+.stack.filling > .row:nth-child(14) > .block:nth-child(5),
+.stack.filling > .row:nth-child(13) > .block:nth-child(4),
+.stack.filling > .row:nth-child(12) > .block:nth-child(3),
+.stack.filling > .row:nth-child(11) > .block:nth-child(2),
+.stack.filling > .row:nth-child(10) > .block:nth-child(1) {
+  animation: filling 0.36s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(10),
+.stack.filling > .row:nth-child(17) > .block:nth-child(9),
+.stack.filling > .row:nth-child(16) > .block:nth-child(8),
+.stack.filling > .row:nth-child(15) > .block:nth-child(7),
+.stack.filling > .row:nth-child(14) > .block:nth-child(6),
+.stack.filling > .row:nth-child(13) > .block:nth-child(5),
+.stack.filling > .row:nth-child(12) > .block:nth-child(4),
+.stack.filling > .row:nth-child(11) > .block:nth-child(3),
+.stack.filling > .row:nth-child(10) > .block:nth-child(2),
+.stack.filling > .row:nth-child(9) > .block:nth-child(1) {
+  animation: filling 0.4s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(11),
+.stack.filling > .row:nth-child(17) > .block:nth-child(10),
+.stack.filling > .row:nth-child(16) > .block:nth-child(9),
+.stack.filling > .row:nth-child(15) > .block:nth-child(8),
+.stack.filling > .row:nth-child(14) > .block:nth-child(7),
+.stack.filling > .row:nth-child(13) > .block:nth-child(6),
+.stack.filling > .row:nth-child(12) > .block:nth-child(5),
+.stack.filling > .row:nth-child(11) > .block:nth-child(4),
+.stack.filling > .row:nth-child(10) > .block:nth-child(3),
+.stack.filling > .row:nth-child(9) > .block:nth-child(2),
+.stack.filling > .row:nth-child(8) > .block:nth-child(1) {
+  animation: filling 0.44s step-end 1;
+}
+
+.stack.filling > .row:nth-child(18) > .block:nth-child(12),
+.stack.filling > .row:nth-child(17) > .block:nth-child(11),
+.stack.filling > .row:nth-child(16) > .block:nth-child(10),
+.stack.filling > .row:nth-child(15) > .block:nth-child(9),
+.stack.filling > .row:nth-child(14) > .block:nth-child(8),
+.stack.filling > .row:nth-child(13) > .block:nth-child(7),
+.stack.filling > .row:nth-child(12) > .block:nth-child(6),
+.stack.filling > .row:nth-child(11) > .block:nth-child(5),
+.stack.filling > .row:nth-child(10) > .block:nth-child(4),
+.stack.filling > .row:nth-child(9) > .block:nth-child(3),
+.stack.filling > .row:nth-child(8) > .block:nth-child(2),
+.stack.filling > .row:nth-child(7) > .block:nth-child(1) {
+  animation: filling 0.48s step-end 1;
+}
+
+.stack.filling > .row:nth-child(17) > .block:nth-child(12),
+.stack.filling > .row:nth-child(16) > .block:nth-child(11),
+.stack.filling > .row:nth-child(15) > .block:nth-child(10),
+.stack.filling > .row:nth-child(14) > .block:nth-child(9),
+.stack.filling > .row:nth-child(13) > .block:nth-child(8),
+.stack.filling > .row:nth-child(12) > .block:nth-child(7),
+.stack.filling > .row:nth-child(11) > .block:nth-child(6),
+.stack.filling > .row:nth-child(10) > .block:nth-child(5),
+.stack.filling > .row:nth-child(9) > .block:nth-child(4),
+.stack.filling > .row:nth-child(8) > .block:nth-child(3),
+.stack.filling > .row:nth-child(7) > .block:nth-child(2),
+.stack.filling > .row:nth-child(6) > .block:nth-child(1) {
+  animation: filling 0.52s step-end 1;
+}
+
+.stack.filling > .row:nth-child(16) > .block:nth-child(12),
+.stack.filling > .row:nth-child(15) > .block:nth-child(11),
+.stack.filling > .row:nth-child(14) > .block:nth-child(10),
+.stack.filling > .row:nth-child(13) > .block:nth-child(9),
+.stack.filling > .row:nth-child(12) > .block:nth-child(8),
+.stack.filling > .row:nth-child(11) > .block:nth-child(7),
+.stack.filling > .row:nth-child(10) > .block:nth-child(6),
+.stack.filling > .row:nth-child(9) > .block:nth-child(5),
+.stack.filling > .row:nth-child(8) > .block:nth-child(4),
+.stack.filling > .row:nth-child(7) > .block:nth-child(3),
+.stack.filling > .row:nth-child(6) > .block:nth-child(2),
+.stack.filling > .row:nth-child(5) > .block:nth-child(1) {
+  animation: filling 0.56s step-end 1;
+}
+
+.stack.filling > .row:nth-child(15) > .block:nth-child(12),
+.stack.filling > .row:nth-child(14) > .block:nth-child(11),
+.stack.filling > .row:nth-child(13) > .block:nth-child(10),
+.stack.filling > .row:nth-child(12) > .block:nth-child(9),
+.stack.filling > .row:nth-child(11) > .block:nth-child(8),
+.stack.filling > .row:nth-child(10) > .block:nth-child(7),
+.stack.filling > .row:nth-child(9) > .block:nth-child(6),
+.stack.filling > .row:nth-child(8) > .block:nth-child(5),
+.stack.filling > .row:nth-child(7) > .block:nth-child(4),
+.stack.filling > .row:nth-child(6) > .block:nth-child(3),
+.stack.filling > .row:nth-child(5) > .block:nth-child(2),
+.stack.filling > .row:nth-child(4) > .block:nth-child(1) {
+  animation: filling 0.6s step-end 1;
+}
+
+.stack.filling > .row:nth-child(14) > .block:nth-child(12),
+.stack.filling > .row:nth-child(13) > .block:nth-child(11),
+.stack.filling > .row:nth-child(12) > .block:nth-child(10),
+.stack.filling > .row:nth-child(11) > .block:nth-child(9),
+.stack.filling > .row:nth-child(10) > .block:nth-child(8),
+.stack.filling > .row:nth-child(9) > .block:nth-child(7),
+.stack.filling > .row:nth-child(8) > .block:nth-child(6),
+.stack.filling > .row:nth-child(7) > .block:nth-child(5),
+.stack.filling > .row:nth-child(6) > .block:nth-child(4),
+.stack.filling > .row:nth-child(5) > .block:nth-child(3),
+.stack.filling > .row:nth-child(4) > .block:nth-child(2),
+.stack.filling > .row:nth-child(3) > .block:nth-child(1) {
+  animation: filling 0.64s step-end 1;
+}
+
+.stack.filling > .row:nth-child(13) > .block:nth-child(12),
+.stack.filling > .row:nth-child(12) > .block:nth-child(11),
+.stack.filling > .row:nth-child(11) > .block:nth-child(10),
+.stack.filling > .row:nth-child(10) > .block:nth-child(9),
+.stack.filling > .row:nth-child(9) > .block:nth-child(8),
+.stack.filling > .row:nth-child(8) > .block:nth-child(7),
+.stack.filling > .row:nth-child(7) > .block:nth-child(6),
+.stack.filling > .row:nth-child(6) > .block:nth-child(5),
+.stack.filling > .row:nth-child(5) > .block:nth-child(4),
+.stack.filling > .row:nth-child(4) > .block:nth-child(3),
+.stack.filling > .row:nth-child(3) > .block:nth-child(2),
+.stack.filling > .row:nth-child(2) > .block:nth-child(1) {
+  animation: filling 0.68s step-end 1;
+}
+
+.stack.filling > .row:nth-child(12) > .block:nth-child(12),
+.stack.filling > .row:nth-child(11) > .block:nth-child(11),
+.stack.filling > .row:nth-child(10) > .block:nth-child(10),
+.stack.filling > .row:nth-child(9) > .block:nth-child(9),
+.stack.filling > .row:nth-child(8) > .block:nth-child(8),
+.stack.filling > .row:nth-child(7) > .block:nth-child(7),
+.stack.filling > .row:nth-child(6) > .block:nth-child(6),
+.stack.filling > .row:nth-child(5) > .block:nth-child(5),
+.stack.filling > .row:nth-child(4) > .block:nth-child(4),
+.stack.filling > .row:nth-child(3) > .block:nth-child(3),
+.stack.filling > .row:nth-child(2) > .block:nth-child(2),
+.stack.filling > .row:nth-child(1) > .block:nth-child(1) {
+  animation: filling 0.72s step-end 1;
+}
+
+.stack.filling > .row:nth-child(11) > .block:nth-child(12),
+.stack.filling > .row:nth-child(10) > .block:nth-child(11),
+.stack.filling > .row:nth-child(9) > .block:nth-child(10),
+.stack.filling > .row:nth-child(8) > .block:nth-child(9),
+.stack.filling > .row:nth-child(7) > .block:nth-child(8),
+.stack.filling > .row:nth-child(6) > .block:nth-child(7),
+.stack.filling > .row:nth-child(5) > .block:nth-child(6),
+.stack.filling > .row:nth-child(4) > .block:nth-child(5),
+.stack.filling > .row:nth-child(3) > .block:nth-child(4),
+.stack.filling > .row:nth-child(2) > .block:nth-child(3),
+.stack.filling > .row:nth-child(1) > .block:nth-child(2) {
+  animation: filling 0.76s step-end 1;
+}
+
+.stack.filling > .row:nth-child(10) > .block:nth-child(12),
+.stack.filling > .row:nth-child(9) > .block:nth-child(11),
+.stack.filling > .row:nth-child(8) > .block:nth-child(10),
+.stack.filling > .row:nth-child(7) > .block:nth-child(9),
+.stack.filling > .row:nth-child(6) > .block:nth-child(8),
+.stack.filling > .row:nth-child(5) > .block:nth-child(7),
+.stack.filling > .row:nth-child(4) > .block:nth-child(6),
+.stack.filling > .row:nth-child(3) > .block:nth-child(5),
+.stack.filling > .row:nth-child(2) > .block:nth-child(4),
+.stack.filling > .row:nth-child(1) > .block:nth-child(3) {
+  animation: filling 0.8s step-end 1;
+}
+
+.stack.filling > .row:nth-child(9) > .block:nth-child(12),
+.stack.filling > .row:nth-child(8) > .block:nth-child(11),
+.stack.filling > .row:nth-child(7) > .block:nth-child(10),
+.stack.filling > .row:nth-child(6) > .block:nth-child(9),
+.stack.filling > .row:nth-child(5) > .block:nth-child(8),
+.stack.filling > .row:nth-child(4) > .block:nth-child(7),
+.stack.filling > .row:nth-child(3) > .block:nth-child(6),
+.stack.filling > .row:nth-child(2) > .block:nth-child(5),
+.stack.filling > .row:nth-child(1) > .block:nth-child(4) {
+  animation: filling 0.84s step-end 1;
+}
+
+.stack.filling > .row:nth-child(8) > .block:nth-child(12),
+.stack.filling > .row:nth-child(7) > .block:nth-child(11),
+.stack.filling > .row:nth-child(6) > .block:nth-child(10),
+.stack.filling > .row:nth-child(5) > .block:nth-child(9),
+.stack.filling > .row:nth-child(4) > .block:nth-child(8),
+.stack.filling > .row:nth-child(3) > .block:nth-child(7),
+.stack.filling > .row:nth-child(2) > .block:nth-child(6),
+.stack.filling > .row:nth-child(1) > .block:nth-child(5) {
+  animation: filling 0.88s step-end 1;
+}
+
+.stack.filling > .row:nth-child(7) > .block:nth-child(12),
+.stack.filling > .row:nth-child(6) > .block:nth-child(11),
+.stack.filling > .row:nth-child(5) > .block:nth-child(10),
+.stack.filling > .row:nth-child(4) > .block:nth-child(9),
+.stack.filling > .row:nth-child(3) > .block:nth-child(8),
+.stack.filling > .row:nth-child(2) > .block:nth-child(7),
+.stack.filling > .row:nth-child(1) > .block:nth-child(6) {
+  animation: filling 0.92s step-end 1;
+}
+
+.stack.filling > .row:nth-child(6) > .block:nth-child(12),
+.stack.filling > .row:nth-child(5) > .block:nth-child(11),
+.stack.filling > .row:nth-child(4) > .block:nth-child(10),
+.stack.filling > .row:nth-child(3) > .block:nth-child(9),
+.stack.filling > .row:nth-child(2) > .block:nth-child(8),
+.stack.filling > .row:nth-child(1) > .block:nth-child(7) {
+  animation: filling 0.96s step-end 1;
+}
+
+.stack.filling > .row:nth-child(5) > .block:nth-child(12),
+.stack.filling > .row:nth-child(4) > .block:nth-child(11),
+.stack.filling > .row:nth-child(3) > .block:nth-child(10),
+.stack.filling > .row:nth-child(2) > .block:nth-child(9),
+.stack.filling > .row:nth-child(1) > .block:nth-child(8) {
+  animation: filling 1s step-end 1;
+}
+
+.stack.filling > .row:nth-child(4) > .block:nth-child(12),
+.stack.filling > .row:nth-child(3) > .block:nth-child(11),
+.stack.filling > .row:nth-child(2) > .block:nth-child(10),
+.stack.filling > .row:nth-child(1) > .block:nth-child(9) {
+  animation: filling 1.04s step-end 1;
+}
+
+.stack.filling > .row:nth-child(3) > .block:nth-child(12),
+.stack.filling > .row:nth-child(2) > .block:nth-child(11),
+.stack.filling > .row:nth-child(1) > .block:nth-child(10) {
+  animation: filling 1.08s step-end 1;
+}
+
+.stack.filling > .row:nth-child(2) > .block:nth-child(12),
+.stack.filling > .row:nth-child(1) > .block:nth-child(11) {
+  animation: filling 1.12s step-end 1;
+}
+
+.stack.filling > .row:nth-child(1) > .block:nth-child(12) {
+  animation: filling 1.16s step-end 1;
+}
+
+@keyframes filling {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
