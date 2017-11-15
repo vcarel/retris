@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Board from './Board'
+import Stack from './Stack'
 import NewGame from './Overlays/NewGame'
 import GameOver from './Overlays/GameOver'
 import Pause from './Overlays/Pause'
@@ -19,10 +19,6 @@ import './index.css'
 const initialState = {
   // Board size is 18x12
   stack: [
-    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -74,7 +70,7 @@ class App extends Component {
         <div className='left pane' />
 
         <div className='middle pane'>
-          <Board
+          <Stack
             stack={tetromino ? mergeIntoStack(tetromino, stack) : stack}
             rowsToDrop={rowsToDrop}
           />
@@ -83,7 +79,7 @@ class App extends Component {
           {status === 'pause' && <Pause />}
           {status === 'end' && <GameOver />}
           {status === 'filling' && (
-            <Board filling stack={createStack(getRandomShape())} />
+            <Stack filling stack={createStack(getRandomShape())} />
           )}
         </div>
 

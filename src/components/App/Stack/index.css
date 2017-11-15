@@ -1,15 +1,9 @@
-.board {
-  width: 100%;
-  height: 100%;
+.stack {
   position: absolute;
+  height: 100%;
+  width: 100%;
   top: 0;
   background: #111;
-}
-
-.board > .stack {
-  position: absolute;
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
 }
