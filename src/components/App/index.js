@@ -148,7 +148,8 @@ class App extends Component {
       stack: createStack(' '),
       level: 0,
       rowsToDrop: [],
-      status: null
+      status: null,
+      tetromino: null
     })
 
     await sleep(1000)
