@@ -13,13 +13,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "docs": "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\;",
+    "docs":
+      "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\;",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "lint": "eslint --max-warnings=0 *.js src/ scripts/",
     "serve": "serve -s build/",
     "preversion": "yarn lint && CI=true yarn test",
-    "version": "yarn build && yarn docs",
+    "version": "yarn build && yarn docs && git add docs",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
