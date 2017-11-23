@@ -1,6 +1,6 @@
 {
   "name": "retris",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "engines": {
     "yarn": ">1.0.0"
   },
@@ -13,8 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "docs":
-      "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\; &&  sed -i 's/\\/static\\//\\/retris\\/static\\//g' docs/*.html ",
+    "docs": "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\; &&  sed -i 's/\\/static\\//\\/retris\\/static\\//g' docs/*.html ",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "lint": "eslint --max-warnings=0 *.js src/ scripts/",
