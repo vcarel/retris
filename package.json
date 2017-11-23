@@ -13,7 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "docs": "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\;",
+    "docs":
+      "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\; &&  sed -i 's/\\/static\\//\\/retris\\/static\\//g' docs/*.html ",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "lint": "eslint --max-warnings=0 *.js src/ scripts/",
