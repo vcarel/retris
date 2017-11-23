@@ -3,19 +3,47 @@
   width: 100vw;
   display: flex;
   align-items: center;
-  background: MidnightBlue;
+  background: var(--app-bg-color);
 }
 
-.app > .left.pane {
+.app > .left.pane,
+.app > .right.pane {
   flex-grow: 1;
 }
 
 .app > .middle.pane {
   /* Board size is 18x12, meaning an aspect ratio of 3x2 */
-  width: 60vh;
-  height: 90vh;
-  border: solid 4px Firebrick;
+  width: calc(66.66vh);
+  height: 100vh;
+  max-height: 150vw;
   position: relative;
+  border: solid Firebrick;
+  --border-width: 4px;
+}
+
+@media (orientation: landscape) {
+  .app > .middle.pane {
+    border-width: 0 var(--border-width);
+  }
+}
+
+@media (orientation: portrait) {
+  .app > .middle.pane {
+    border-width: var(--border-width) 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .app {
+    background: MidnightBlue;
+  }
+
+  .app > .middle.pane {
+    /* Board size is 18x12, meaning an aspect ratio of 3x2 */
+    width: 60vh;
+    height: 90vh;
+    border-width: var(--border-width);
+  }
 }
 
 .app > .middle.pane > .backdrop {
@@ -32,10 +60,6 @@
   position: absolute;
   top: 30%;
   width: 100%;
-}
-
-.app > .right.pane {
-  flex-grow: 1;
 }
 
 .blink {

@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   top: 0;
-  background: #111;
+  background: var(--stack-bg-color);
   display: flex;
   flex-direction: column;
 }

@@ -1,0 +1,12 @@
+/* Breakpoints are hard-coded because we cannot use CSS variables in media queries */
+/*
+--sd-min-width: 576px;
+--md-min-width: 768px;
+--ld-min-width: 992px;
+--xd-min-width: 1200px;
+*/
+
+html {
+  --app-bg-color: #030303;
+  --stack-bg-color: #111;
+}

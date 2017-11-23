@@ -1,10 +1,10 @@
 .block {
   box-shadow: inset 0px 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border: solid 1px #111;
+  border: solid 1px var(--stack-bg-color);
 }
 
 .block.void {
-  background: #030303;
+  background: var(--app-bg-color);
   box-shadow: inset 0px 0px 0px 4px rgba(0, 0, 0, 0.75);
   /*visibility: hidden;*/
 }
