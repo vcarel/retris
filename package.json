@@ -4,17 +4,12 @@
   "engines": {
     "yarn": ">1.0.0"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": [ ">0.2%", "not dead", "not ie <= 11", "not op_mini all" ],
   "homepage": "https://vcarel.github.io/retris/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "docs": "rm -rf docs && mkdir docs && cp -R build/* docs && find docs -name *.map -exec rm {} \\; &&  sed -i 's/\\/static\\//\\/retris\\/static\\//g' docs/*.html ",
+    "docs": "rm -rf docs && mkdir docs && cp -R build/* docs",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "lint": "eslint --max-warnings=0 src/",
