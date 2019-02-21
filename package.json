@@ -4,12 +4,8 @@
   "engines": {
     "yarn": ">1.0.0"
   },
-  "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
-  },
+  "browserslist": [ ">0.2%", "not dead", "not ie <= 11", "not op_mini all" ],
+  "homepage": "https://vcarel.github.io/retris/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
@@ -22,12 +18,12 @@
     "version": "yarn build && yarn docs && git add docs",
     "postversion": "git push && git push --tags"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "2.1.5"
+  },
   "devDependencies": {
     "eslint": "5.12.0",
     "eslint-config-react-app": "^3.0.7",
