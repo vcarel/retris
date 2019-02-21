@@ -1,12 +1,4 @@
-import {
-  sprites,
-  rotateLeft,
-  rotateRight,
-  mergeIntoStack,
-  wouldCollide,
-  dropRows,
-  getRowsToDrop
-} from './sprites'
+import { sprites, rotateLeft, rotateRight, mergeIntoStack, wouldCollide, dropRows, getRowsToDrop } from './sprites'
 
 const { I, J, T } = sprites
 

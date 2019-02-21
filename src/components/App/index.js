@@ -4,15 +4,7 @@ import Stack from './Stack'
 import NewGame from './Overlays/NewGame'
 import GameOver from './Overlays/GameOver'
 import Pause from './Overlays/Pause'
-import {
-  mergeIntoStack,
-  sprites,
-  rotateLeft,
-  rotateRight,
-  wouldCollide,
-  dropRows,
-  getRowsToDrop
-} from '../../sprites'
+import { mergeIntoStack, sprites, rotateLeft, rotateRight, wouldCollide, dropRows, getRowsToDrop } from '../../sprites'
 import { sleep } from '../../time'
 import './index.css'
 
@@ -57,10 +49,7 @@ class App extends Component {
 
   componentWillUnmount () {
     document.removeEventListener('keydown', this.handleKeyDown)
-    document.removeEventListener(
-      'visibilityChange',
-      this.handleVisibilityChange
-    )
+    document.removeEventListener('visibilityChange', this.handleVisibilityChange)
   }
 
   render () {
@@ -70,17 +59,12 @@ class App extends Component {
         <div className='left pane' />
 
         <div className='middle pane'>
-          <Stack
-            stack={tetromino ? mergeIntoStack(tetromino, stack) : stack}
-            rowsToDrop={rowsToDrop}
-          />
+          <Stack stack={tetromino ? mergeIntoStack(tetromino, stack) : stack} rowsToDrop={rowsToDrop} />
 
           {status === 'new' && <NewGame />}
           {status === 'pause' && <Pause />}
           {status === 'end' && <GameOver />}
-          {status === 'filling' && (
-            <Stack filling stack={createStack(getRandomShape())} />
-          )}
+          {status === 'filling' && <Stack filling stack={createStack(getRandomShape())} />}
         </div>
 
         <div className='right pane' />
@@ -103,7 +87,10 @@ class App extends Component {
       }
     } else if (status === 'playing') {
       const { stack } = this.state
-      let { tetromino, tetromino: { bottom, left, sprite } } = this.state
+      let {
+        tetromino,
+        tetromino: { bottom, left, sprite }
+      } = this.state
 
       if (code === 'ArrowLeft') {
         left--
@@ -172,7 +159,11 @@ class App extends Component {
   }
 
   moveTetrominoDown () {
-    const { stack, tetromino, tetromino: { bottom } } = this.state
+    const {
+      stack,
+      tetromino,
+      tetromino: { bottom }
+    } = this.state
     const nextTetromino = { ...tetromino, bottom: bottom + 1 }
 
     if (!wouldCollide(nextTetromino, stack)) {
